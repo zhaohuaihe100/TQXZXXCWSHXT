@@ -1,0 +1,8 @@
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\TQXZXXCWSHXT.exe
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\TQXZXXCWSHXT.pdb
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.Form1.resources
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.Properties.Resources.resources
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.csproj.GenerateResource.Cache
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.exe
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.pdb
+D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.csprojResolveAssemblyReference.cache
