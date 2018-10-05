@@ -14,3 +14,5 @@ G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\De
 G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.exe
 G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.pdb
 G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.csprojResolveAssemblyReference.cache
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\MySql.Data.dll
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\MySql.Data.xml

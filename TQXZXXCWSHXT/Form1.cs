@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace TQXZXXCWSHXT
 {
@@ -108,6 +109,8 @@ namespace TQXZXXCWSHXT
                 return;
             
             //MessageBox.Show(nRows.ToString());
+            //首先把报账记录原始数据插入到数据库
+            this.InsertJLToMysql();
             
             for (int i = 0; i < nRows; i++)
             {
@@ -115,6 +118,30 @@ namespace TQXZXXCWSHXT
                 
                 
             }
+        }
+        private bool InsertJLToMysql() //把datagrideview中的记录数据插入mysql
+        {
+            int nRows=1;
+            if (this.dataGridView1.Rows.Count > 1)
+                nRows = this.dataGridView1.Rows.Count - 1;
+            else
+                return false;
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+            for(int i=0;i<nRows;i++)
+            {
+                string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[4].Value + "," + this.dataGridView1.Rows[i].Cells[5].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[6].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[7].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
+                //MySqlDataAdapter reader = mc.ExeQuery(ssql);
+                MessageBox.Show(ssql);
+
+                mc.ExeQuery(ssql);
+
+            }
+
+            return false;
         }
     }
 

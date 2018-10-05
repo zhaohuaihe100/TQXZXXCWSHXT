@@ -147,7 +147,7 @@ namespace TQXZXXCWSHXT
     string password = null;
     string database = null;
     string port = "3306";
-    string charset = "utf-8";
+    string charset = "utf8";
 
     public MysqlConnector() { }
     public MysqlConnector SetServer(string server)
@@ -207,12 +207,24 @@ namespace TQXZXXCWSHXT
     public void ExeUpdate(string M_str_sqlstr)
     {
         MySqlConnection mysqlcon = this.GetMysqlConnection();
-        mysqlcon.Open();
-        MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
-        mysqlcom.ExecuteNonQuery();
-        mysqlcom.Dispose();
-        mysqlcon.Close();
-        mysqlcon.Dispose();
+
+        try
+        {
+            mysqlcon.Open();
+            MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
+            mysqlcom.ExecuteNonQuery();
+            mysqlcom.Dispose();
+            mysqlcon.Close();
+            mysqlcon.Dispose();
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            mysqlcon.Clone();
+        }
     }
     #endregion
 
@@ -224,12 +236,22 @@ namespace TQXZXXCWSHXT
     /// <returns>返回MySqlDataReader对象</returns>
     public MySqlDataReader ExeQuery(string M_str_sqlstr)
     {
-        Console.WriteLine(M_str_sqlstr);
+        //Console.WriteLine(M_str_sqlstr);
         MySqlConnection mysqlcon = this.GetMysqlConnection();
-        MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
-        mysqlcon.Open();
-        MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);
-        return mysqlread;
+        try
+        {
+            
+            MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
+            mysqlcon.Open();
+            MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);
+            return mysqlread;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.Message);
+            mysqlcon.Close();
+            return null;
+        }
     }
     #endregion
 }
