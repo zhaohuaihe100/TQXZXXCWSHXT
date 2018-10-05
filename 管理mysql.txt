@@ -1,0 +1,112 @@
+mariadb用户和权限管理
+mysql -u root -p
+
+insert into mysql.user(Host,User,Password) values('localhost','guest',password('123456'));
+
+
+grant all privileges on xspeeder.* to guest@"%" identified by '123456';
+
+flush privileges;
+
+
+
+create database infodb;
+
+grant all privileges on infodb.* to juzhi@localhost identified by "admin12345"
+
+flush privileges;
+
+
+
+
+MySQL命令行能否实现新建用户呢？答案无疑是肯定的。而且在使用使用MySQL命令行新建用户后，还可以为用户授予权限。
+
+首先要声明一下：一般情况下，修改MySQL密码，授权，是需要有mysql里的root权限的。
+注：本操作是在WIN命令提示符下，phpMyAdmin同样适用。
+用户：phplamp
+用户数据库：phplampDB
+
+1.MySQL命令行新建用户
+
+//登录MYSQL
+@>mysql -u root -p
+@>密码
+//创建用户
+mysql> insert into mysql.user(Host,User,Password) values('localhost','phplamp',password('1234'));
+//刷新系统权限表
+mysql>flush privileges;
+这样就创建了一个名为：phplamp  密码为：1234  的用户。
+
+//退出后登录一下
+mysql>exit;
+@>mysql -u phplamp -p
+@>输入密码
+mysql>登录成功
+
+2.MySQL命令行为用户授权
+
+//登录MYSQL（有ROOT权限）。我里我以ROOT身份登录.
+@>mysql -u root -p
+@>密码
+//首先为用户创建一个数据库(phplampDB)
+mysql>create database phplampDB;
+//授权phplamp用户拥有phplamp数据库的所有权限
+@>grant all privileges on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表
+mysql>flush privileges;
+mysql>其它操作
+
+//如果想指定部分权限给一用户，可以这样来写:
+mysql>grant select,update on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表。
+mysql>flush privileges;
+
+mysql> grant 权限1,权限2,…权限n on 数据库名称.表名称 to 用户名@用户地址 identified by ‘连接口令’;
+
+权限1,权限2,…权限n代表select,insert,update,delete,create,drop,index,alter,grant,references,reload,shutdown,process,file等14个权限。
+当权限1,权限2,…权限n被all privileges或者all代替，表示赋予用户全部权限。
+当数据库名称.表名称被*.*代替，表示赋予用户操作服务器上所有数据库所有表的权限。
+用户地址可以是localhost，也可以是ip地址、机器名字、域名。也可以用’%'表示从任何地址连接。
+‘连接口令’不能为空，否则创建失败。
+
+例如：
+mysql>grant select,insert,update,delete,create,drop on vtdc.employee to joe@10.163.225.87 identified by ‘123′;
+给来自10.163.225.87的用户joe分配可对数据库vtdc的employee表进行select,insert,update,delete,create,drop等操作的权限，并设定口令为123。
+
+mysql>grant all privileges on vtdc.* to joe@10.163.225.87 identified by ‘123′;
+给来自10.163.225.87的用户joe分配可对数据库vtdc所有表进行所有操作的权限，并设定口令为123。
+
+mysql>grant all privileges on *.* to joe@10.163.225.87 identified by ‘123′;
+给来自10.163.225.87的用户joe分配可对所有数据库的所有表进行所有操作的权限，并设定口令为123。
+
+mysql>grant all privileges on *.* to joe@localhost identified by ‘123′;
+给本机用户joe分配可对所有数据库的所有表进行所有操作的权限，并设定口令为123。 
+
+
+
+
+添加远程用户admin密码为password GRANT ALL PRIVILEGES ON *.* TO admin@localhost IDENTIFIED BY \'password\' WITH GRANT OPTION GRANT ALL PRIVILEGES ON *.* TO admin@\"%\" IDENTIFIED BY \'password\' WITH GRANT OPTION
+
+ 
+
+用root用户登陆，然后：
+
+grant all privileges on *.* to 创建的用户名 @"%" identified by "密码";
+
+flush privileges;   * 刷新刚才的内容*
+
+格式：grant 权限 on 数据库教程名.表名 to 用户@登录主机 identified by "用户密码";
+
+            @ 后面是访问mysql的客户端ip地址（或是 主机名） % 代表任意的客户端，如果填写 localhost 为
+
+本地访问（那此用户就不能远程访问该mysql数据库了）。
+
+同时也可以为现有的用户设置是否具有远程访问权限。如下：
+
+use mysql;
+
+update db set host = '%' where user = '用户名'; （如果写成 host=localhost 那此用户就不具有远程访问权限）
+
+flush privileges;
+
+grant all privileges on *.* to 'myuser'@'%' identified by 'mypassword' with grant option;
