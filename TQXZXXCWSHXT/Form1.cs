@@ -9,11 +9,13 @@ using System.Windows.Forms;
 
 namespace TQXZXXCWSHXT
 {
+    
     public partial class Form1 : Form
     {
         private string selectedSchool;
         private string selectedK1;//单击选中的总分类科目
         private string selectedK2;//单击选中的明细分类科目
+
         public Form1()
         {
             InitializeComponent();
@@ -91,20 +93,31 @@ namespace TQXZXXCWSHXT
             
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
+
 
         }
 
-        //private void treeView1_Click(object sender, EventArgs e)
-        //{
+        private void button8_Click(object sender, EventArgs e)// 分类汇总
+        {
+            int nRows=1;
+            if (this.dataGridView1.Rows.Count > 1)
+                nRows = this.dataGridView1.Rows.Count - 1;
+            else
+                return;
             
-
-        //}
-
-        //private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        //{
+            //MessageBox.Show(nRows.ToString());
             
-        //}
+            for (int i = 0; i < nRows; i++)
+            {
+                RecordHZ tRecordHz = new RecordHZ();
+                
+                
+            }
+        }
     }
+
+
+
 }
