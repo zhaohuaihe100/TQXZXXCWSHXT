@@ -223,9 +223,7 @@ namespace TQXZXXCWSHXT
             mysqlcon.Open();
             MySqlCommand mysqlcom;
 
-            //mysqlcom = new MySqlCommand("set names 'utf8'", mysqlcon);
-            //mysqlcom.ExecuteNonQuery();
-            //mysqlcom.Dispose();
+           
             mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
             mysqlcom.ExecuteNonQuery();
             mysqlcom.Dispose();

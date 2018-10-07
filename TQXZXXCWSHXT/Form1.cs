@@ -72,16 +72,16 @@ namespace TQXZXXCWSHXT
                          this.dataGridView1.Rows[index].Cells[1].Value = this.textBbzid.Text;
                          this.dataGridView1.Rows[index].Cells[2].Value = this.selectedK1;
                          this.dataGridView1.Rows[index].Cells[3].Value = this.selectedK2;
-                         this.dataGridView1.Rows[index].Cells[4].Value = this.textBzs.Text;
-                         this.dataGridView1.Rows[index].Cells[5].Value = this.textBje.Text;
+                         this.dataGridView1.Rows[index].Cells[6].Value = this.textBzs.Text;//票据张数
+                         this.dataGridView1.Rows[index].Cells[7].Value = this.textBje.Text;//票据金额
                          if (this.checkBsfxj.Checked == true)
-                             this.dataGridView1.Rows[index].Cells[6].Value = "现金";
+                             this.dataGridView1.Rows[index].Cells[4].Value = "现金";
                          else
-                             this.dataGridView1.Rows[index].Cells[6].Value = "转账";
+                             this.dataGridView1.Rows[index].Cells[4].Value = "转账";
                          if (this.checkBsfhg.Checked == true)
-                             this.dataGridView1.Rows[index].Cells[7].Value = "合格";
+                             this.dataGridView1.Rows[index].Cells[5].Value = "合格";
                          else
-                             this.dataGridView1.Rows[index].Cells[7].Value = "不合格";
+                             this.dataGridView1.Rows[index].Cells[5].Value = "不合格";
 
                          this.dataGridView1.Rows[index].Cells[8].Value = this.textBbz.Text;
 
@@ -112,6 +112,9 @@ namespace TQXZXXCWSHXT
             //MessageBox.Show(nRows.ToString());
             //首先把报账记录原始数据插入到数据库
             this.InsertJLToMysql();
+
+            //其次，把数据库中的本次报账的数据汇总后返回
+
             
             for (int i = 0; i < nRows; i++)
             {
@@ -134,9 +137,9 @@ namespace TQXZXXCWSHXT
             mc.SetDataBase("TQXZXXCWSHXT");
             for(int i=0;i<nRows;i++)
             {
-                string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[4].Value + "," + this.dataGridView1.Rows[i].Cells[5].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[6].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[7].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
+                string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[6].Value + "," + this.dataGridView1.Rows[i].Cells[7].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[4].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[5].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
                 //MySqlDataAdapter reader = mc.ExeQuery(ssql);
-                MessageBox.Show(ssql);
+                //MessageBox.Show(ssql);
 
                 //mc.ExeQuery(ssql);
                 mc.ExeUpdate(ssql);
@@ -144,6 +147,18 @@ namespace TQXZXXCWSHXT
             }
 
             return false;
+        }
+
+        private bool BzjiluHz()
+        {
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+
+
+            return true;
         }
     }
 

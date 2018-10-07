@@ -6,3 +6,12 @@ D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x8
 D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.exe
 D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.pdb
 D:\SoftDev\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.csprojResolveAssemblyReference.cache
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\TQXZXXCWSHXT.exe
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\TQXZXXCWSHXT.pdb
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\MySql.Data.dll
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\bin\Debug\MySql.Data.xml
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.Form1.resources
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.Properties.Resources.resources
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.csproj.GenerateResource.Cache
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.exe
+G:\softjob\台前县中小学财务审核系统\TQXZXXCWSHXT\TQXZXXCWSHXT\obj\x86\Debug\TQXZXXCWSHXT.pdb

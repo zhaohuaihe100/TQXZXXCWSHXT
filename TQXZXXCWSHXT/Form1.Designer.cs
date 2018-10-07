@@ -157,15 +157,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lb_selectedK2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.报账ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.学校ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.总科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.明细分类科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.票据张数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -188,6 +179,15 @@
             this.textBxge = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.报账ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.学校ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.总科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.明细分类科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.票据张数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -547,10 +547,10 @@
             this.学校ID,
             this.总科目,
             this.明细分类科目,
-            this.票据张数,
-            this.Column1,
             this.Column2,
             this.Column3,
+            this.票据张数,
+            this.Column1,
             this.Column4});
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.Location = new System.Drawing.Point(267, 504);
@@ -558,56 +558,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1203, 312);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // 报账ID
-            // 
-            this.报账ID.HeaderText = "报账学校";
-            this.报账ID.Name = "报账ID";
-            // 
-            // 学校ID
-            // 
-            this.学校ID.HeaderText = "报账ID";
-            this.学校ID.Name = "学校ID";
-            this.学校ID.Width = 130;
-            // 
-            // 总科目
-            // 
-            this.总科目.HeaderText = "总分类科目";
-            this.总科目.Name = "总科目";
-            this.总科目.Width = 150;
-            // 
-            // 明细分类科目
-            // 
-            this.明细分类科目.HeaderText = "明细分类科目";
-            this.明细分类科目.Name = "明细分类科目";
-            this.明细分类科目.Width = 180;
-            // 
-            // 票据张数
-            // 
-            this.票据张数.HeaderText = "票据张数";
-            this.票据张数.Name = "票据张数";
-            this.票据张数.Width = 80;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "票据金额";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "是否现金";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "是否合格";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "备注";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 500;
             // 
             // button2
             // 
@@ -837,6 +787,56 @@
             this.label2.Text = "单位：元";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // 报账ID
+            // 
+            this.报账ID.HeaderText = "报账学校";
+            this.报账ID.Name = "报账ID";
+            // 
+            // 学校ID
+            // 
+            this.学校ID.HeaderText = "报账ID";
+            this.学校ID.Name = "学校ID";
+            this.学校ID.Width = 130;
+            // 
+            // 总科目
+            // 
+            this.总科目.HeaderText = "总分类科目";
+            this.总科目.Name = "总科目";
+            this.总科目.Width = 150;
+            // 
+            // 明细分类科目
+            // 
+            this.明细分类科目.HeaderText = "明细分类科目";
+            this.明细分类科目.Name = "明细分类科目";
+            this.明细分类科目.Width = 180;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "是否现金";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "是否合格";
+            this.Column3.Name = "Column3";
+            // 
+            // 票据张数
+            // 
+            this.票据张数.HeaderText = "票据张数";
+            this.票据张数.Name = "票据张数";
+            this.票据张数.Width = 80;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "票据金额";
+            this.Column1.Name = "Column1";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "备注";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 500;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -912,17 +912,17 @@
         private System.Windows.Forms.TextBox textBfjfje;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn 报账ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn 学校ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn 总科目;
         private System.Windows.Forms.DataGridViewTextBoxColumn 明细分类科目;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 票据张数;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 票据张数;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label label2;
     }
 }
 
