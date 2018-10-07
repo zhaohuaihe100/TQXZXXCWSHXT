@@ -111,17 +111,17 @@ namespace TQXZXXCWSHXT
             
             //MessageBox.Show(nRows.ToString());
             //首先把报账记录原始数据插入到数据库
-            this.InsertJLToMysql();
+            //this.InsertJLToMysql();
 
             //其次，把数据库中的本次报账的数据汇总后返回
-
+            BzjiluHz();
             
-            for (int i = 0; i < nRows; i++)
-            {
-                RecordHZ tRecordHz = new RecordHZ();
+            //for (int i = 0; i < nRows; i++)
+            //{
+            //    RecordHZ tRecordHz = new RecordHZ();
                 
                 
-            }
+            //}
         }
         private bool InsertJLToMysql() //把datagrideview中的记录数据插入mysql
         {
@@ -130,11 +130,20 @@ namespace TQXZXXCWSHXT
                 nRows = this.dataGridView1.Rows.Count - 1;
             else
                 return false;
+            for (int i = 0; i < nRows; i++)
+            {
+                if (this.dataGridView1.Rows[i].Cells[5].Value == "小计")
+                {
+                    nRows = i - 1;//为了防止用户点击了汇总后，又点击保存记录时把汇总项加上。
+                }
+            }
+
             MysqlConnector mc = new MysqlConnector();
             mc.SetServer("127.0.0.1");
             mc.SetUserID("cwsh6");
             mc.SetPassword("1234");
             mc.SetDataBase("TQXZXXCWSHXT");
+            
             for(int i=0;i<nRows;i++)
             {
                 string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[6].Value + "," + this.dataGridView1.Rows[i].Cells[7].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[4].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[5].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
@@ -146,10 +155,75 @@ namespace TQXZXXCWSHXT
 
             }
 
-            return false;
+            MessageBox.Show("保存完毕");
+            return true;
         }
 
         private bool BzjiluHz()
+        {
+            MessageBox.Show("请注意，分类汇总后的数据不用再保存到数据库中");
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+
+            string ssql1="select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
+            string ssql2 = "ifnull(sfhg,'小计') as sfhg,sum(pjzs) as pjzs,sum(pjje) as pjje from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+" group by mxflkm,sfxj,sfhg with rollup"; //from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+groupBox1 
+            string ssql = ssql1 + ssql2;
+            //MessageBox.Show(ssql);
+            //this.dataGridView1.Rows.Clear();
+            MySqlDataReader hzjg = mc.ExeQuery(ssql);
+            if (!hzjg.Read())
+            {
+                MessageBox.Show("请先保存数据后再汇总");
+                return false;
+            }
+            while (hzjg.Read())
+            {
+                int index = this.dataGridView1.Rows.Add();
+                this.dataGridView1.Rows[index].Cells[0].Value = hzjg.GetString(0);//报账学校
+                this.dataGridView1.Rows[index].Cells[1].Value = hzjg.GetString(1);//报账ID
+                this.dataGridView1.Rows[index].Cells[2].Value = hzjg.GetString(2);//总分类科目if
+                this.dataGridView1.Rows[index].Cells[3].Value = hzjg.GetString(3);//明细分类科目
+                if (hzjg.GetString(3) == "合计：")
+                    this.dataGridView1.Rows[index].Cells[3].Style.ForeColor = Color.Red;
+                this.dataGridView1.Rows[index].Cells[4].Value = hzjg.GetString(4);//是否现金
+                if (hzjg.GetString(4) == "小计")
+                    this.dataGridView1.Rows[index].Cells[4].Style.ForeColor = Color.Red;
+                this.dataGridView1.Rows[index].Cells[5].Value = hzjg.GetString(5);//是否合格
+                if (hzjg.GetString(5) == "小计")
+                    this.dataGridView1.Rows[index].Cells[5].Style.ForeColor = Color.Red;
+
+                this.dataGridView1.Rows[index].Cells[6].Value = hzjg.GetUInt32(6);//票据张数
+                this.dataGridView1.Rows[index].Cells[7].Value = hzjg.GetDouble(7);//票据金额
+                
+            }
+            return true;
+        }
+
+        private void button9_Click(object sender, EventArgs e)//清空报账记录
+        {
+            this.dataGridView1.Rows.Clear();
+
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+            string ssql = "delete from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
+            mc.ExeUpdate(ssql);
+            
+
+        }
+
+        private void button10_Click(object sender, EventArgs e) //保存记录
+        {
+
+            this.InsertJLToMysql();
+        }
+
+        private void button7_Click(object sender, EventArgs e) //生成报账记录表,excel表
         {
             MysqlConnector mc = new MysqlConnector();
             mc.SetServer("127.0.0.1");
@@ -157,8 +231,76 @@ namespace TQXZXXCWSHXT
             mc.SetPassword("1234");
             mc.SetDataBase("TQXZXXCWSHXT");
 
+            string ssql1 = "select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
+            string ssql2 = "ifnull(sfhg,'小计') as sfhg,sum(pjzs) as pjzs,sum(pjje) as pjje from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'" + " group by mxflkm,sfxj,sfhg with rollup"; //from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+groupBox1 
+            string ssql = ssql1 + ssql2;
+            //MessageBox.Show(ssql);
+            //this.dataGridView1.Rows.Clear();
+            MySqlDataReader hzjg = mc.ExeQuery(ssql);
 
-            return true;
+            while (hzjg.Read())
+            {
+               
+
+            }
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)//显示保存记录
+        {
+            this.dataGridView1.Rows.Clear(); //重新显示数据库中此次报账的记录，根据报账ID显示保存记录
+            string ssql = "select * from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+
+            MySqlDataReader hzjg = mc.ExeQuery(ssql);
+            
+            while (hzjg.Read())
+            {
+                int index = this.dataGridView1.Rows.Add();
+                this.dataGridView1.Rows[index].Cells[0].Value = hzjg.GetString(0);//报账学校
+                this.dataGridView1.Rows[index].Cells[1].Value = hzjg.GetString(1);//报账ID
+                this.dataGridView1.Rows[index].Cells[2].Value = hzjg.GetString(2);//总分类科目if
+                this.dataGridView1.Rows[index].Cells[3].Value = hzjg.GetString(3);//明细分类科目
+                //if (hzjg.GetString(3) == "合计：")
+                //    this.dataGridView1.Rows[index].Cells[3].Style.ForeColor = Color.Red;
+                this.dataGridView1.Rows[index].Cells[4].Value = hzjg.GetString(6);//是否现金
+                //if (hzjg.GetString(4) == "小计")
+                //    this.dataGridView1.Rows[index].Cells[4].Style.ForeColor = Color.Red;
+                this.dataGridView1.Rows[index].Cells[5].Value = hzjg.GetString(7);//是否合格
+                //if (hzjg.GetString(5) == "小计")
+                //    this.dataGridView1.Rows[index].Cells[5].Style.ForeColor = Color.Red;
+
+                this.dataGridView1.Rows[index].Cells[6].Value = hzjg.GetUInt32(4);//票据张数
+                this.dataGridView1.Rows[index].Cells[7].Value = hzjg.GetDouble(5);//票据金额
+                this.dataGridView1.Rows[index].Cells[8].Value = hzjg.GetString(8);//备注
+
+            }
+            
+
+        }
+
+        private void button11_Click(object sender, EventArgs e) //更新保存记录，把保存后修改的记录重新保存
+        {
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("127.0.0.1");
+            mc.SetUserID("cwsh6");
+            mc.SetPassword("1234");
+            mc.SetDataBase("TQXZXXCWSHXT");
+            string ssql = "delete from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
+            mc.ExeUpdate(ssql); //先把旧的数据从数据库中清除
+            //然后再保存更新后的数据
+            this.InsertJLToMysql();
+
         }
     }
 
