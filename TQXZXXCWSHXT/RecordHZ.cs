@@ -193,9 +193,19 @@ namespace TQXZXXCWSHXT
     /// <returns>返回MySqlConnection对象</returns>
     private MySqlConnection GetMysqlConnection()
     {
-        string M_str_sqlcon = string.Format("server={0};user id={1};password={2};database={3};port={4};Charset={5}", server, userid, password, database, port, charset);
-        MySqlConnection myCon = new MySqlConnection(M_str_sqlcon);
-        return myCon;
+        try
+        {
+            string M_str_sqlcon = string.Format("server={0};user id={1};password={2};database={3};port={4};charset={5}", server, userid, password, database, port, charset);
+            MySqlConnection myCon = new MySqlConnection(M_str_sqlcon);
+            return myCon;
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show(ex.ToString());
+            return null;
+        }
+
+        
     }
     #endregion
 
@@ -211,7 +221,12 @@ namespace TQXZXXCWSHXT
         try
         {
             mysqlcon.Open();
-            MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
+            MySqlCommand mysqlcom;
+
+            mysqlcom = new MySqlCommand("set names 'gbk'", mysqlcon);
+            mysqlcom.ExecuteNonQuery();
+            mysqlcom.Dispose();
+            mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
             mysqlcom.ExecuteNonQuery();
             mysqlcom.Dispose();
             mysqlcon.Close();

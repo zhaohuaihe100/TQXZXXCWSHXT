@@ -29,7 +29,8 @@ namespace TQXZXXCWSHXT
         {
             this.selectedSchool = this.listBox1.SelectedItem.ToString().Substring(2);
             this.lb_welcome.Text = "欢迎" + this.selectedSchool + "前来报账！";
-            this.textBbzid.Text = DateTime.Now.ToString();
+            //报账ID为年月日+日时分，除年之外，每一项都占2位，
+            this.textBbzid.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:mm"); ;        // 2008-09-04 
 
         }
 
@@ -137,7 +138,8 @@ namespace TQXZXXCWSHXT
                 //MySqlDataAdapter reader = mc.ExeQuery(ssql);
                 MessageBox.Show(ssql);
 
-                mc.ExeQuery(ssql);
+                //mc.ExeQuery(ssql);
+                mc.ExeUpdate(ssql);
 
             }
 
