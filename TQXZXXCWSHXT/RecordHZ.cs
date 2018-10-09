@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient; 
 using System.Windows.Forms;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Configuration;
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -26,7 +26,7 @@ namespace TQXZXXCWSHXT
         private string schoolName;//报账学校
         private string bzID;  //报账ID
         private string zflK;  //报账总分类科目
-        private string mxflK;  //报账明细分类科目
+        private string mxflK="";  //报账明细分类科目
         //private string 
         public static string sqlconn;
 
