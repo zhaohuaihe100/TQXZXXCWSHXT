@@ -132,7 +132,7 @@ namespace TQXZXXCWSHXT
                 return false;
             for (int i = 0; i < nRows; i++)
             {
-                if (this.dataGridView1.Rows[i].Cells[5].Value == "小计")
+                if (this.dataGridView1.Rows[i].Cells[5].Value.ToString() == "小计")
                 {
                     nRows = i - 1;//为了防止用户点击了汇总后，又点击保存记录时把汇总项加上。
                 }
