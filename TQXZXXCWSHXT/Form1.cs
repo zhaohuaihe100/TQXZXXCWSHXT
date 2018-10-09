@@ -231,18 +231,52 @@ namespace TQXZXXCWSHXT
             mc.SetPassword("1234");
             mc.SetDataBase("TQXZXXCWSHXT");
 
-            string ssql1 = "select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
-            string ssql2 = "ifnull(sfhg,'小计') as sfhg,sum(pjzs) as pjzs,sum(pjje) as pjje from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'" + " group by mxflkm,sfxj,sfhg with rollup"; //from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+groupBox1 
-            string ssql = ssql1 + ssql2;
+            //string ssql1 = "select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
+            //string ssql2 = "ifnull(sfhg,'小计') as sfhg,sum(pjzs) as pjzs,sum(pjje) as pjje from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'" + " group by mxflkm,sfxj,sfhg with rollup"; //from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+groupBox1 
+            //string ssql = ssql1 + ssql2;
             //MessageBox.Show(ssql);
             //this.dataGridView1.Rows.Clear();
-            MySqlDataReader hzjg = mc.ExeQuery(ssql);
-
-            while (hzjg.Read())
+            string ssql_pjzs_all = "select mxflkm,sum(pjzs) as pjzs from bzjilu where bzid='"+this.textBbzid.Text+"'"+" group by mxflkm";// 取出各个科目下的总张数
+            MySqlDataReader hzjg = mc.ExeQuery(ssql_pjzs_all);
+            if (!hzjg.Read())
             {
-               
-
+                MessageBox.Show("请保存数据后再生成报账申请表");
+                return;
             }
+            ExcelEditHelper do_excel = new ExcelEditHelper(); //生成操作excel的类
+            
+            do_excel.Open("c:\\MODE.xlsx");// 绝对路径
+            
+            do_excel.ws = do_excel.GetSheet("Sheet3");//获取表格方式
+            //do_excel.SetCellValue(do_excel.ws, 1, 1, "tt"); 给单元格赋值方式
+
+            //do_excel.wbs.Application.Visible = true; //设置此项可以让excel显示出来
+
+
+            
+
+                while (hzjg.Read())
+                {
+                    try
+                    {
+                        int i = 0;
+                        //if(hzjg.GetString(0))
+                        //do_excel.SetCellValue(do_excel.ws, 5, 3 + i, hzjg.GetString(0));
+                        //do_excel.SetCellValue(do_excel.ws, 6, 3 + i, hzjg.GetDouble(1));
+                        MessageBox.Show(hzjg.GetString(0));
+                        MessageBox.Show(hzjg.GetString(1));
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        return;
+                    }
+                }
+            
+            do_excel.wbs.Application.Visible = true;
+  
+           
 
 
         }

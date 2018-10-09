@@ -1,0 +1,53 @@
+Microsoft Windows [版本 6.1.7601]
+版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+
+C:\Users\pc>mysql -u cwsh6 -p
+Enter password: ****
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.1.30-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use TQXZXXCWSHXT
+Database changed
+MariaDB [TQXZXXCWSHXT]> create table xxje(xxmc varchar(30),xxzye double,
+    -> sjfye double,jyfjfye double ,pxfye double ,sngye double,qtf1ye double,
+    -> sjfye double,jyfjfye double ,pxfye double ,sngye double,qtf1ye double,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near '' a
+t line 3
+MariaDB [TQXZXXCWSHXT]> create talbe xxje(xxmc varchar(30),xxzye double,
+    -> sjfye double,jyfjfye double,pxfye double,sngfye double,qtf1ye double,
+    -> qtf2ye double);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near 'tal
+be xxje(xxmc varchar(30),xxzye double,
+sjfye double,jyfjfye double,pxfye doub' at line 1
+MariaDB [TQXZXXCWSHXT]> create talbe xxje(xxmc varchar(30),xxzye double,
+    -> sjfye double,jyfjfye double ,pxfye double ,sngye double,qtf1ye double,
+    -> qtf2ye double);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near 'tal
+be xxje(xxmc varchar(30),xxzye double,
+sjfye double,jyfjfye double ,pxfye dou' at line 1
+MariaDB [TQXZXXCWSHXT]> create talbe xxje(xxmc varchar(30),xxzye double,
+    -> sjfye double,jyfjfye double ,pxfye double ,sngye double,qtf1ye double,
+    -> qtf2ye double);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near 'tal
+be xxje(xxmc varchar(30),xxzye double,
+sjfye double,jyfjfye double ,pxfye dou' at line 1
+MariaDB [TQXZXXCWSHXT]> create table xxje(xxmc varchar(30),xxzye double,
+    -> sjfye double,jyfjfye double ,pxfye double ,sngye double,qtf1ye double,
+    -> qtf2ye double);
+Query OK, 0 rows affected (0.14 sec)
+
+MariaDB [TQXZXXCWSHXT]> exit
+Bye
+
+C:\Users\pc>sc query > d:\sql.txt
+
+C:\Users\pc>
