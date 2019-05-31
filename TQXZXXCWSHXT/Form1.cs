@@ -30,7 +30,10 @@ namespace TQXZXXCWSHXT
             this.selectedSchool = this.listBox1.SelectedItem.ToString().Substring(2);
             this.lb_welcome.Text = "欢迎" + this.selectedSchool + "前来报账！";
             //报账ID为年月日+日时分，除年之外，每一项都占2位，
-            this.textBbzid.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:mm"); ;        // 2008-09-04 
+            this.textBbzid.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:mm");        // 2008-09-04 
+
+            //清除GridView中的内容
+            dataGridView1.Rows.Clear();
 
         }
 
@@ -53,6 +56,8 @@ namespace TQXZXXCWSHXT
                 //MessageBox.Show(this.selectedK1);
             }
             this.lb_selectedK2.Text = this.selectedK2;
+
+            textBzs.Focus();
             
         }
 
@@ -90,6 +95,9 @@ namespace TQXZXXCWSHXT
                          this.textBje.Text = "";
                      }
                  }
+
+
+            textBzs.Focus();
 
                 
             
@@ -132,16 +140,17 @@ namespace TQXZXXCWSHXT
                 return false;
             for (int i = 0; i < nRows; i++)
             {
-                if (this.dataGridView1.Rows[i].Cells[5].Value.ToString() == "小计")
+                if (this.dataGridView1.Rows[i].Cells[5].Value==null)
                 {
-                    nRows = i - 1;//为了防止用户点击了汇总后，又点击保存记录时把汇总项加上。
+                    nRows = i;//为了防止用户点击了汇总后，又点击保存记录时把汇总项加上。
+                    break;
                 }
             }
 
             MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
             mc.SetDataBase("TQXZXXCWSHXT");
             
             for(int i=0;i<nRows;i++)
@@ -163,9 +172,9 @@ namespace TQXZXXCWSHXT
         {
             MessageBox.Show("请注意，分类汇总后的数据不用再保存到数据库中");
             MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
             mc.SetDataBase("TQXZXXCWSHXT");
 
             string ssql1="select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
@@ -179,9 +188,16 @@ namespace TQXZXXCWSHXT
                 MessageBox.Show("请先保存数据后再汇总");
                 return false;
             }
+
+
+
+
+
+            this.dataGridView1.Rows.Add();//加一行空行，让原始记录和汇总记录分开
             while (hzjg.Read())
             {
                 int index = this.dataGridView1.Rows.Add();
+                
                 this.dataGridView1.Rows[index].Cells[0].Value = hzjg.GetString(0);//报账学校
                 this.dataGridView1.Rows[index].Cells[1].Value = hzjg.GetString(1);//报账ID
                 this.dataGridView1.Rows[index].Cells[2].Value = hzjg.GetString(2);//总分类科目if
@@ -206,13 +222,13 @@ namespace TQXZXXCWSHXT
         {
             this.dataGridView1.Rows.Clear();
 
-            MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
-            mc.SetDataBase("TQXZXXCWSHXT");
-            string ssql = "delete from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
-            mc.ExeUpdate(ssql);
+            //MysqlConnector mc = new MysqlConnector();
+            //mc.SetServer("192.168.78.189");
+            //mc.SetUserID("cwsh6");
+            //mc.SetPassword("1234");
+            //mc.SetDataBase("TQXZXXCWSHXT");
+            //string ssql = "delete from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
+            //mc.ExeUpdate(ssql);
             
 
         }
@@ -225,59 +241,80 @@ namespace TQXZXXCWSHXT
 
         private void button7_Click(object sender, EventArgs e) //生成报账记录表,excel表
         {
+            string ssql_pjzs_all = "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjzs) as pjzs， from bzjilu where bzid='" + 
+                this.textBbzid.Text + "'" + " group by mxflkm with rollup";
+            createBZJLB(ssql_pjzs_all,false, 6);//填写张数
+
+            string ssql_pjje_all = "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjje) as pjje， from bzjilu where bzid='" +
+                this.textBbzid.Text + "'" + " and sfxj='现金' group by mxflkm with rollup";
+            createBZJLB(ssql_pjje_all, false, 7);//填写票据现金金额
+
+
+
+           
+
+        }
+        private void createBZJLB(string msql,bool sh,int nrow) //调用此函数生成报账记录表,sh表示是申请的金额还是审核的金额，false表示申请金额，true表示
+                                                            //审核金额，nrow表示在第几行插入相应数字,在申请栏中6是张数，7是现金，8是转账，9是总额。
+        {                                              //在审核后栏中，10是审核后张数，11是审核后现金，12是审核后转账，13审核后总金额。
             MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
             mc.SetDataBase("TQXZXXCWSHXT");
 
-            //string ssql1 = "select bzxx,bzid,zflkm,ifnull(mxflkm,'合计：') as mxflkm,ifnull(sfxj,'小计') as sfxj ,";
-            //string ssql2 = "ifnull(sfhg,'小计') as sfhg,sum(pjzs) as pjzs,sum(pjje) as pjje from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'" + " group by mxflkm,sfxj,sfhg with rollup"; //from bzjilu where bzid='"+this.textBbzid.Text.ToString()+"'"+groupBox1 
-            //string ssql = ssql1 + ssql2;
-            //MessageBox.Show(ssql);
-            //this.dataGridView1.Rows.Clear();
-            string ssql_pjzs_all = "select mxflkm,sum(pjzs) as pjzs from bzjilu where bzid='"+this.textBbzid.Text+"'"+" group by mxflkm";// 取出各个科目下的总张数
-            MySqlDataReader hzjg = mc.ExeQuery(ssql_pjzs_all);
+            string ssql = msql; // "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjje) as pjje， from bzjilu where bzid='" + this.textBbzid.Text + "'" + " group by mxflkm with rollup";// 取出各个科目下的总张数
+            //string ssql_xj_all = "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjje) as pjje， from bzjilu where bzid='" + this.textBbzid.Text + "'" + " group by mxflkm with rollup";
+            MySqlDataReader hzjg = mc.ExeQuery(ssql); //汇总票据张数结果
+            //MySqlDataReader xj = mc.ExeQuery(ssql_xj_all);//汇总现金结果
+
             if (!hzjg.Read())
             {
                 MessageBox.Show("请保存数据后再生成报账申请表");
                 return;
             }
             ExcelEditHelper do_excel = new ExcelEditHelper(); //生成操作excel的类
-            
-            do_excel.Open("c:\\MODE.xlsx");// 绝对路径
-            
+
+            do_excel.Open("D:\\MODE.xlsx");// 绝对路径
+
             do_excel.ws = do_excel.GetSheet("Sheet3");//获取表格方式
-            //do_excel.SetCellValue(do_excel.ws, 1, 1, "tt"); 给单元格赋值方式
 
-            //do_excel.wbs.Application.Visible = true; //设置此项可以让excel显示出来
-
-
-            
-
-                while (hzjg.Read())
+            int i = 0;
+            do  //循环输出各个科目的汇总张数及金额
+            {
+                try
                 {
-                    try
-                    {
-                        int i = 0;
-                        //if(hzjg.GetString(0))
-                        //do_excel.SetCellValue(do_excel.ws, 5, 3 + i, hzjg.GetString(0));
-                        //do_excel.SetCellValue(do_excel.ws, 6, 3 + i, hzjg.GetDouble(1));
-                        MessageBox.Show(hzjg.GetString(0));
-                        MessageBox.Show(hzjg.GetString(1));
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                        return;
-                    }
-                }
-            
-            do_excel.wbs.Application.Visible = true;
-  
-           
 
+                    if (hzjg.GetString(0) != "合计：") //表示到了汇总栏了，合计栏不用填
+                    {
+                        if (sh == false)
+                        {
+                            do_excel.SetCellValue(do_excel.ws, 5, 3 + i, hzjg.GetString(0));
+                            do_excel.SetCellValue(do_excel.ws, nrow, 3 + i, hzjg.GetDouble(1));
+                            //do_excel.SetCellValue(do_excel.ws, 7, 3 + i, xj.GetDouble(1));
+                        }
+                        else
+                        {
+                            do_excel.SetCellValue(do_excel.ws, 10, 3 + i, hzjg.GetString(0));
+                            do_excel.SetCellValue(do_excel.ws, nrow, 3 + i, hzjg.GetDouble(1));
+
+                        }
+                    }
+                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return;
+                }
+                //MessageBox.Show(hzjg.GetString(0)); 20181106测试，找出问题，每执行一次read()，就会换一行。
+                //MessageBox.Show(hzjg.GetString(1)); 2018-11-06 03:22:22
+                i++;
+            } while (hzjg.Read());
+
+
+
+            do_excel.wbs.Application.Visible = true;   
 
         }
 
@@ -291,33 +328,40 @@ namespace TQXZXXCWSHXT
             this.dataGridView1.Rows.Clear(); //重新显示数据库中此次报账的记录，根据报账ID显示保存记录
             string ssql = "select * from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
             MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
             mc.SetDataBase("TQXZXXCWSHXT");
 
             MySqlDataReader hzjg = mc.ExeQuery(ssql);
-            
-            while (hzjg.Read())
+            try
             {
-                int index = this.dataGridView1.Rows.Add();
-                this.dataGridView1.Rows[index].Cells[0].Value = hzjg.GetString(0);//报账学校
-                this.dataGridView1.Rows[index].Cells[1].Value = hzjg.GetString(1);//报账ID
-                this.dataGridView1.Rows[index].Cells[2].Value = hzjg.GetString(2);//总分类科目if
-                this.dataGridView1.Rows[index].Cells[3].Value = hzjg.GetString(3);//明细分类科目
-                //if (hzjg.GetString(3) == "合计：")
-                //    this.dataGridView1.Rows[index].Cells[3].Style.ForeColor = Color.Red;
-                this.dataGridView1.Rows[index].Cells[4].Value = hzjg.GetString(6);//是否现金
-                //if (hzjg.GetString(4) == "小计")
-                //    this.dataGridView1.Rows[index].Cells[4].Style.ForeColor = Color.Red;
-                this.dataGridView1.Rows[index].Cells[5].Value = hzjg.GetString(7);//是否合格
-                //if (hzjg.GetString(5) == "小计")
-                //    this.dataGridView1.Rows[index].Cells[5].Style.ForeColor = Color.Red;
 
-                this.dataGridView1.Rows[index].Cells[6].Value = hzjg.GetUInt32(4);//票据张数
-                this.dataGridView1.Rows[index].Cells[7].Value = hzjg.GetDouble(5);//票据金额
-                this.dataGridView1.Rows[index].Cells[8].Value = hzjg.GetString(8);//备注
+                while (hzjg.Read())
+                {
+                    int index = this.dataGridView1.Rows.Add();
+                    this.dataGridView1.Rows[index].Cells[0].Value = hzjg.GetString(0);//报账学校
+                    this.dataGridView1.Rows[index].Cells[1].Value = hzjg.GetString(1);//报账ID
+                    this.dataGridView1.Rows[index].Cells[2].Value = hzjg.GetString(2);//总分类科目if
+                    this.dataGridView1.Rows[index].Cells[3].Value = hzjg.GetString(3);//明细分类科目
+                    //if (hzjg.GetString(3) == "合计：")
+                    //    this.dataGridView1.Rows[index].Cells[3].Style.ForeColor = Color.Red;
+                    this.dataGridView1.Rows[index].Cells[4].Value = hzjg.GetString(6);//是否现金
+                    //if (hzjg.GetString(4) == "小计")
+                    //    this.dataGridView1.Rows[index].Cells[4].Style.ForeColor = Color.Red;
+                    this.dataGridView1.Rows[index].Cells[5].Value = hzjg.GetString(7);//是否合格
+                    //if (hzjg.GetString(5) == "小计")
+                    //    this.dataGridView1.Rows[index].Cells[5].Style.ForeColor = Color.Red;
 
+                    this.dataGridView1.Rows[index].Cells[6].Value = hzjg.GetUInt32(4);//票据张数
+                    this.dataGridView1.Rows[index].Cells[7].Value = hzjg.GetDouble(5);//票据金额
+                    this.dataGridView1.Rows[index].Cells[8].Value = hzjg.GetString(8);//备注
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
             
 
@@ -326,14 +370,46 @@ namespace TQXZXXCWSHXT
         private void button11_Click(object sender, EventArgs e) //更新保存记录，把保存后修改的记录重新保存
         {
             MysqlConnector mc = new MysqlConnector();
-            mc.SetServer("127.0.0.1");
-            mc.SetUserID("cwsh6");
-            mc.SetPassword("1234");
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
             mc.SetDataBase("TQXZXXCWSHXT");
             string ssql = "delete from bzjilu where bzid='" + this.textBbzid.Text.ToString() + "'";
             mc.ExeUpdate(ssql); //先把旧的数据从数据库中清除
             //然后再保存更新后的数据
             this.InsertJLToMysql();
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.Rows.Remove(this.dataGridView1.CurrentRow);
+        }
+
+        private void textBzs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SendKeys.Send("{Tab}");
+            } 
+
+        }
+
+        private void textBje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SendKeys.Send("{Tab}");
+            } 
+
+        }
+
+        private void checkBsfxj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SendKeys.Send("{Tab}");
+            }
 
         }
     }

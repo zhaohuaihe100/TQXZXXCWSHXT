@@ -32,37 +32,38 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("01办公费");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("02印刷费");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("03咨询费");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("04手续费");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("05水费");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("06电费");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("07邮电费");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("08取暖费");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("0901学校安保费");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("0902校园保洁费");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("0903校园绿化费");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("0904其他物业费");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("11差旅费");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("1201出国考察费");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("1202教师出国培训费");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("13维修(护)费");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("14租赁费");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("15会议费");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("1601教师培训费");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("1602其他培训费用");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("17公务接待费");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("1801实验耗材费用");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("1802体育耗材费用");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("1803其他耗材费用");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("26劳务费");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("27委托业务费");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("28工会经费");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("29福利费");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("31公务用车维护费");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("39其他交通费");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("9901学生活动费用");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("9902学校财产、责任保险费");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("9903其他商品和服务支出");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("302商品和服务支出", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("0303宣传费");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("04手续费");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("05水费");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("06电费");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("07邮电费");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("08取暖费");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("0901学校安保费");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("0902校园保洁费");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("0903校园绿化费");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("0904其他物业费");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("11差旅费");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("1201出国考察费");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("1202教师出国培训费");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("13维修(护)费");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("14租赁费");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("15会议费");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("1601教师培训费");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("1602其他培训费用");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("17公务接待费");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("1801实验耗材费用");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("1802体育耗材费用");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("1803其他耗材费用");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("26劳务费");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("27委托业务费");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("28工会经费");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("29福利费");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("31公务用车维护费");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("39其他交通费");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("9901学生活动费用");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("9902学校财产、责任保险费");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("9903其他商品和服务支出");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("302商品和服务支出", new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode3,
             treeNode4,
@@ -95,22 +96,22 @@
             treeNode31,
             treeNode32,
             treeNode33,
-            treeNode34});
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("01离休费");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("02退休费");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("03退职费");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("04抚恤金");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("05生活补助");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("07医疗费");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("0801助学金费用");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("0802学生营养餐补助费");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("09奖学金");
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("11住房公积金");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("12提租补贴");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("13购房补贴");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("99其他对个人和家庭的补助出");
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("303对个人和家庭的补助支出", new System.Windows.Forms.TreeNode[] {
-            treeNode36,
+            treeNode34,
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("01离休费");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("02退休费");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("03退职费");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("04抚恤金");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("05生活补助");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("07医疗费");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("0801助学金费用");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("0802学生营养餐补助费");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("09奖学金");
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("11住房公积金");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("12提租补贴");
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("13购房补贴");
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("99其他对个人和家庭的补助出");
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("303对个人和家庭的补助支出", new System.Windows.Forms.TreeNode[] {
             treeNode37,
             treeNode38,
             treeNode39,
@@ -122,20 +123,21 @@
             treeNode45,
             treeNode46,
             treeNode47,
-            treeNode48});
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("01房屋建筑物构建");
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("02办公设备购置");
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("03专用设备购置");
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("06大型修缮");
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("07信息网络及软件购置更新");
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("99其他资本性支出");
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("310其他资本性支出", new System.Windows.Forms.TreeNode[] {
-            treeNode50,
+            treeNode48,
+            treeNode49});
+            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("01房屋建筑物构建");
+            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("02办公设备购置");
+            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("03专用设备购置");
+            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("06大型修缮");
+            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("07信息网络及软件购置更新");
+            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("99其他资本性支出");
+            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("310其他资本性支出", new System.Windows.Forms.TreeNode[] {
             treeNode51,
             treeNode52,
             treeNode53,
             treeNode54,
-            treeNode55});
+            treeNode55,
+            treeNode56});
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.lb_welcome = new System.Windows.Forms.Label();
@@ -157,15 +159,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lb_selectedK2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.报账ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.学校ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.总科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.明细分类科目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.票据张数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -191,6 +184,17 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.xxid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bzid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zflkm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mxflkm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sfxj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sfhg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pjzs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bjje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zjly = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -278,115 +282,117 @@
             treeNode3.Text = "02印刷费";
             treeNode4.Name = "k03";
             treeNode4.Text = "03咨询费";
-            treeNode5.Name = "04";
-            treeNode5.Text = "04手续费";
-            treeNode6.Name = "05";
-            treeNode6.Text = "05水费";
-            treeNode7.Name = "06";
-            treeNode7.Text = "06电费";
-            treeNode8.Name = "07";
-            treeNode8.Text = "07邮电费";
-            treeNode9.Name = "08";
-            treeNode9.Text = "08取暖费";
-            treeNode10.Name = "09";
-            treeNode10.Text = "0901学校安保费";
-            treeNode11.Name = "0902";
-            treeNode11.Text = "0902校园保洁费";
-            treeNode12.Name = "0903";
-            treeNode12.Text = "0903校园绿化费";
-            treeNode13.Name = "0904";
-            treeNode13.Text = "0904其他物业费";
-            treeNode14.Name = "11";
-            treeNode14.Text = "11差旅费";
-            treeNode15.Name = "1201";
-            treeNode15.Text = "1201出国考察费";
-            treeNode16.Name = "1202";
-            treeNode16.Text = "1202教师出国培训费";
-            treeNode17.Name = "13";
-            treeNode17.Text = "13维修(护)费";
-            treeNode18.Name = "14";
-            treeNode18.Text = "14租赁费";
-            treeNode19.Name = "15";
-            treeNode19.Text = "15会议费";
-            treeNode20.Name = "1601";
-            treeNode20.Text = "1601教师培训费";
-            treeNode21.Name = "1602";
-            treeNode21.Text = "1602其他培训费用";
-            treeNode22.Name = "17";
-            treeNode22.Text = "17公务接待费";
-            treeNode23.Name = "1801";
-            treeNode23.Text = "1801实验耗材费用";
-            treeNode24.Name = "1802";
-            treeNode24.Text = "1802体育耗材费用";
-            treeNode25.Name = "1803";
-            treeNode25.Text = "1803其他耗材费用";
-            treeNode26.Name = "26";
-            treeNode26.Text = "26劳务费";
-            treeNode27.Name = "27";
-            treeNode27.Text = "27委托业务费";
-            treeNode28.Name = "28";
-            treeNode28.Text = "28工会经费";
-            treeNode29.Name = "29";
-            treeNode29.Text = "29福利费";
-            treeNode30.Name = "31";
-            treeNode30.Text = "31公务用车维护费";
-            treeNode31.Name = "39";
-            treeNode31.Text = "39其他交通费";
-            treeNode32.Name = "9901";
-            treeNode32.Text = "9901学生活动费用";
-            treeNode33.Name = "9902";
-            treeNode33.Text = "9902学校财产、责任保险费";
-            treeNode34.Name = "9903";
-            treeNode34.Text = "9903其他商品和服务支出";
-            treeNode35.Name = "302";
-            treeNode35.Text = "302商品和服务支出";
-            treeNode36.Name = "01";
-            treeNode36.Text = "01离休费";
-            treeNode37.Name = "02";
-            treeNode37.Text = "02退休费";
-            treeNode38.Name = "03";
-            treeNode38.Text = "03退职费";
-            treeNode39.Name = "04";
-            treeNode39.Text = "04抚恤金";
-            treeNode40.Name = "05";
-            treeNode40.Text = "05生活补助";
-            treeNode41.Name = "07";
-            treeNode41.Text = "07医疗费";
-            treeNode42.Name = "0801";
-            treeNode42.Text = "0801助学金费用";
-            treeNode43.Name = "0802";
-            treeNode43.Text = "0802学生营养餐补助费";
-            treeNode44.Name = "09";
-            treeNode44.Text = "09奖学金";
-            treeNode45.Name = "11";
-            treeNode45.Text = "11住房公积金";
-            treeNode46.Name = "12";
-            treeNode46.Text = "12提租补贴";
-            treeNode47.Name = "13";
-            treeNode47.Text = "13购房补贴";
-            treeNode48.Name = "99";
-            treeNode48.Text = "99其他对个人和家庭的补助出";
-            treeNode49.Name = "k303";
-            treeNode49.Text = "303对个人和家庭的补助支出";
-            treeNode50.Name = "01";
-            treeNode50.Text = "01房屋建筑物构建";
-            treeNode51.Name = "02";
-            treeNode51.Text = "02办公设备购置";
-            treeNode52.Name = "03";
-            treeNode52.Text = "03专用设备购置";
-            treeNode53.Name = "06";
-            treeNode53.Text = "06大型修缮";
-            treeNode54.Name = "07";
-            treeNode54.Text = "07信息网络及软件购置更新";
-            treeNode55.Name = "99";
-            treeNode55.Text = "99其他资本性支出";
-            treeNode56.Name = "k310";
-            treeNode56.Text = "310其他资本性支出";
+            treeNode5.Name = "k0303";
+            treeNode5.Text = "0303宣传费";
+            treeNode6.Name = "04";
+            treeNode6.Text = "04手续费";
+            treeNode7.Name = "05";
+            treeNode7.Text = "05水费";
+            treeNode8.Name = "06";
+            treeNode8.Text = "06电费";
+            treeNode9.Name = "07";
+            treeNode9.Text = "07邮电费";
+            treeNode10.Name = "08";
+            treeNode10.Text = "08取暖费";
+            treeNode11.Name = "09";
+            treeNode11.Text = "0901学校安保费";
+            treeNode12.Name = "0902";
+            treeNode12.Text = "0902校园保洁费";
+            treeNode13.Name = "0903";
+            treeNode13.Text = "0903校园绿化费";
+            treeNode14.Name = "0904";
+            treeNode14.Text = "0904其他物业费";
+            treeNode15.Name = "11";
+            treeNode15.Text = "11差旅费";
+            treeNode16.Name = "1201";
+            treeNode16.Text = "1201出国考察费";
+            treeNode17.Name = "1202";
+            treeNode17.Text = "1202教师出国培训费";
+            treeNode18.Name = "13";
+            treeNode18.Text = "13维修(护)费";
+            treeNode19.Name = "14";
+            treeNode19.Text = "14租赁费";
+            treeNode20.Name = "15";
+            treeNode20.Text = "15会议费";
+            treeNode21.Name = "1601";
+            treeNode21.Text = "1601教师培训费";
+            treeNode22.Name = "1602";
+            treeNode22.Text = "1602其他培训费用";
+            treeNode23.Name = "17";
+            treeNode23.Text = "17公务接待费";
+            treeNode24.Name = "1801";
+            treeNode24.Text = "1801实验耗材费用";
+            treeNode25.Name = "1802";
+            treeNode25.Text = "1802体育耗材费用";
+            treeNode26.Name = "1803";
+            treeNode26.Text = "1803其他耗材费用";
+            treeNode27.Name = "26";
+            treeNode27.Text = "26劳务费";
+            treeNode28.Name = "27";
+            treeNode28.Text = "27委托业务费";
+            treeNode29.Name = "28";
+            treeNode29.Text = "28工会经费";
+            treeNode30.Name = "29";
+            treeNode30.Text = "29福利费";
+            treeNode31.Name = "31";
+            treeNode31.Text = "31公务用车维护费";
+            treeNode32.Name = "39";
+            treeNode32.Text = "39其他交通费";
+            treeNode33.Name = "9901";
+            treeNode33.Text = "9901学生活动费用";
+            treeNode34.Name = "9902";
+            treeNode34.Text = "9902学校财产、责任保险费";
+            treeNode35.Name = "9903";
+            treeNode35.Text = "9903其他商品和服务支出";
+            treeNode36.Name = "302";
+            treeNode36.Text = "302商品和服务支出";
+            treeNode37.Name = "01";
+            treeNode37.Text = "01离休费";
+            treeNode38.Name = "02";
+            treeNode38.Text = "02退休费";
+            treeNode39.Name = "03";
+            treeNode39.Text = "03退职费";
+            treeNode40.Name = "04";
+            treeNode40.Text = "04抚恤金";
+            treeNode41.Name = "05";
+            treeNode41.Text = "05生活补助";
+            treeNode42.Name = "07";
+            treeNode42.Text = "07医疗费";
+            treeNode43.Name = "0801";
+            treeNode43.Text = "0801助学金费用";
+            treeNode44.Name = "0802";
+            treeNode44.Text = "0802学生营养餐补助费";
+            treeNode45.Name = "09";
+            treeNode45.Text = "09奖学金";
+            treeNode46.Name = "11";
+            treeNode46.Text = "11住房公积金";
+            treeNode47.Name = "12";
+            treeNode47.Text = "12提租补贴";
+            treeNode48.Name = "13";
+            treeNode48.Text = "13购房补贴";
+            treeNode49.Name = "99";
+            treeNode49.Text = "99其他对个人和家庭的补助出";
+            treeNode50.Name = "k303";
+            treeNode50.Text = "303对个人和家庭的补助支出";
+            treeNode51.Name = "01";
+            treeNode51.Text = "01房屋建筑物构建";
+            treeNode52.Name = "02";
+            treeNode52.Text = "02办公设备购置";
+            treeNode53.Name = "03";
+            treeNode53.Text = "03专用设备购置";
+            treeNode54.Name = "06";
+            treeNode54.Text = "06大型修缮";
+            treeNode55.Name = "07";
+            treeNode55.Text = "07信息网络及软件购置更新";
+            treeNode56.Name = "99";
+            treeNode56.Text = "99其他资本性支出";
+            treeNode57.Name = "k310";
+            treeNode57.Text = "310其他资本性支出";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode35,
-            treeNode49,
-            treeNode56});
+            treeNode36,
+            treeNode50,
+            treeNode57});
             this.treeView1.Size = new System.Drawing.Size(345, 316);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -499,6 +505,7 @@
             this.checkBsfxj.TabIndex = 7;
             this.checkBsfxj.Text = "现金";
             this.checkBsfxj.UseVisualStyleBackColor = true;
+            this.checkBsfxj.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkBsfxj_KeyPress);
             // 
             // textBje
             // 
@@ -506,6 +513,7 @@
             this.textBje.Name = "textBje";
             this.textBje.Size = new System.Drawing.Size(185, 33);
             this.textBje.TabIndex = 6;
+            this.textBje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBje_KeyPress);
             // 
             // textBzs
             // 
@@ -513,6 +521,7 @@
             this.textBzs.Name = "textBzs";
             this.textBzs.Size = new System.Drawing.Size(118, 33);
             this.textBzs.TabIndex = 5;
+            this.textBzs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBzs_KeyPress);
             // 
             // label5
             // 
@@ -546,71 +555,22 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.报账ID,
-            this.学校ID,
-            this.总科目,
-            this.明细分类科目,
-            this.Column2,
-            this.Column3,
-            this.票据张数,
-            this.Column1,
-            this.Column4});
+            this.xxid,
+            this.bzid,
+            this.zflkm,
+            this.mxflkm,
+            this.sfxj,
+            this.sfhg,
+            this.pjzs,
+            this.bjje,
+            this.bz,
+            this.zjly});
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.Location = new System.Drawing.Point(267, 504);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1203, 312);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // 报账ID
-            // 
-            this.报账ID.HeaderText = "报账学校";
-            this.报账ID.Name = "报账ID";
-            // 
-            // 学校ID
-            // 
-            this.学校ID.HeaderText = "报账ID";
-            this.学校ID.Name = "学校ID";
-            this.学校ID.Width = 130;
-            // 
-            // 总科目
-            // 
-            this.总科目.HeaderText = "总分类科目";
-            this.总科目.Name = "总科目";
-            this.总科目.Width = 150;
-            // 
-            // 明细分类科目
-            // 
-            this.明细分类科目.HeaderText = "明细分类科目";
-            this.明细分类科目.Name = "明细分类科目";
-            this.明细分类科目.Width = 180;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "是否现金";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "是否合格";
-            this.Column3.Name = "Column3";
-            // 
-            // 票据张数
-            // 
-            this.票据张数.HeaderText = "票据张数";
-            this.票据张数.Name = "票据张数";
-            this.票据张数.Width = 80;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "票据金额";
-            this.Column1.Name = "Column1";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "备注";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 500;
             // 
             // button3
             // 
@@ -811,7 +771,7 @@
             this.button8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button8.Location = new System.Drawing.Point(1487, 775);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(87, 41);
+            this.button8.Size = new System.Drawing.Size(96, 41);
             this.button8.TabIndex = 12;
             this.button8.Text = "分类汇总";
             this.button8.UseVisualStyleBackColor = true;
@@ -832,9 +792,9 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button9.Location = new System.Drawing.Point(1485, 542);
+            this.button9.Location = new System.Drawing.Point(1485, 507);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(87, 43);
+            this.button9.Size = new System.Drawing.Size(98, 38);
             this.button9.TabIndex = 14;
             this.button9.Text = "清空记录";
             this.button9.UseVisualStyleBackColor = true;
@@ -843,9 +803,9 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button10.Location = new System.Drawing.Point(1485, 605);
+            this.button10.Location = new System.Drawing.Point(1487, 621);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 41);
+            this.button10.Size = new System.Drawing.Size(98, 35);
             this.button10.TabIndex = 15;
             this.button10.Text = "保存记录";
             this.button10.UseVisualStyleBackColor = true;
@@ -854,7 +814,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(1476, 675);
+            this.button2.Location = new System.Drawing.Point(1485, 674);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 31);
             this.button2.TabIndex = 16;
@@ -867,11 +827,77 @@
             this.button11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button11.Location = new System.Drawing.Point(1487, 722);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(86, 37);
+            this.button11.Size = new System.Drawing.Size(98, 37);
             this.button11.TabIndex = 17;
             this.button11.Text = "更新保存";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button12.Location = new System.Drawing.Point(1489, 566);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(94, 33);
+            this.button12.TabIndex = 18;
+            this.button12.Text = "删除当前行";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // xxid
+            // 
+            this.xxid.HeaderText = "报账学校";
+            this.xxid.Name = "xxid";
+            // 
+            // bzid
+            // 
+            this.bzid.HeaderText = "报账ID";
+            this.bzid.Name = "bzid";
+            this.bzid.Width = 130;
+            // 
+            // zflkm
+            // 
+            this.zflkm.HeaderText = "总分类科目";
+            this.zflkm.Name = "zflkm";
+            this.zflkm.Width = 150;
+            // 
+            // mxflkm
+            // 
+            this.mxflkm.HeaderText = "明细分类科目";
+            this.mxflkm.Name = "mxflkm";
+            this.mxflkm.Width = 130;
+            // 
+            // sfxj
+            // 
+            this.sfxj.HeaderText = "是否现金";
+            this.sfxj.Name = "sfxj";
+            // 
+            // sfhg
+            // 
+            this.sfhg.HeaderText = "是否合格";
+            this.sfhg.Name = "sfhg";
+            // 
+            // pjzs
+            // 
+            this.pjzs.HeaderText = "票据张数";
+            this.pjzs.Name = "pjzs";
+            this.pjzs.Width = 80;
+            // 
+            // bjje
+            // 
+            this.bjje.HeaderText = "票据金额";
+            this.bjje.Name = "bjje";
+            // 
+            // bz
+            // 
+            this.bz.HeaderText = "备注";
+            this.bz.Name = "bz";
+            this.bz.Width = 500;
+            // 
+            // zjly
+            // 
+            this.zjly.HeaderText = "资金来源";
+            this.zjly.Name = "zjly";
             // 
             // Form1
             // 
@@ -879,6 +905,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1666, 750);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button10);
@@ -954,19 +981,21 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 报账ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 学校ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 总科目;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 明细分类科目;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 票据张数;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xxid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bzid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zflkm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mxflkm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sfxj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sfhg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pjzs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bjje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zjly;
     }
 }
 

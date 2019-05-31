@@ -55,6 +55,7 @@ namespace TQXZXXCWSHXT
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                return;
             }
         }
 
