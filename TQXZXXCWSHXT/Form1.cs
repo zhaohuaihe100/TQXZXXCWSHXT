@@ -23,6 +23,7 @@ namespace TQXZXXCWSHXT
             this.selectedSchool = "";//初始化选中提示信息
             this.selectedK1 = "";
             this.selectedK2 = "";
+            this.comboBox1.SelectedIndex = 0;
         }
 
         private void listBox1_Click(object sender, EventArgs e)
@@ -88,7 +89,9 @@ namespace TQXZXXCWSHXT
                          else
                              this.dataGridView1.Rows[index].Cells[5].Value = "不合格";
 
-                         this.dataGridView1.Rows[index].Cells[8].Value = this.textBbz.Text;
+                         this.dataGridView1.Rows[index].Cells[8].Value = this.comboBox1.SelectedItem.ToString();
+                         this.dataGridView1.Rows[index].Cells[9].Value = this.textBbz.Text;//增加开支来源后，8是开支来源记录，9才是备注，20190603
+
 
 
                          this.textBzs.Text = "";
@@ -131,7 +134,7 @@ namespace TQXZXXCWSHXT
                 
             //}
         }
-        private bool InsertJLToMysql() //把datagrideview中的记录数据插入mysql
+        private bool InsertJLToMysql() //把datagrideview1中的记录数据插入mysql
         {
             int nRows=1;
             if (this.dataGridView1.Rows.Count > 1)
@@ -155,9 +158,21 @@ namespace TQXZXXCWSHXT
             
             for(int i=0;i<nRows;i++)
             {
-                string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[6].Value + "," + this.dataGridView1.Rows[i].Cells[7].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[4].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[5].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
+                //string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'" 
+                //    + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value + 
+                //    "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[6].Value +
+                //    "," + this.dataGridView1.Rows[i].Cells[7].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[4].Value + "'" + "," +
+                //    "'" + this.dataGridView1.Rows[i].Cells[5].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" + ")";
+                //增加开支来源字段后，重新设置插入顺序
+                string ssql = "insert into bzjilu values(" + "'" + this.dataGridView1.Rows[i].Cells[0].Value + "'" + "," + "'"
+                    + this.dataGridView1.Rows[i].Cells[1].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[2].Value +
+                    "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[3].Value + "'" + "," + this.dataGridView1.Rows[i].Cells[6].Value +
+                    "," + this.dataGridView1.Rows[i].Cells[7].Value + "," + "'" + this.dataGridView1.Rows[i].Cells[4].Value + "'" + "," +
+                    "'" + this.dataGridView1.Rows[i].Cells[5].Value + "'" + "," + "'" + this.dataGridView1.Rows[i].Cells[8].Value + "'" +//8是开支来源
+                    "," + "'" + this.dataGridView1.Rows[i].Cells[9].Value + "'"  //9是备注                 
+                    + ")";
                 //MySqlDataAdapter reader = mc.ExeQuery(ssql);
-                //MessageBox.Show(ssql);
+                MessageBox.Show(ssql);
 
                 //mc.ExeQuery(ssql);
                 mc.ExeUpdate(ssql);
@@ -355,7 +370,8 @@ namespace TQXZXXCWSHXT
 
                     this.dataGridView1.Rows[index].Cells[6].Value = hzjg.GetUInt32(4);//票据张数
                     this.dataGridView1.Rows[index].Cells[7].Value = hzjg.GetDouble(5);//票据金额
-                    this.dataGridView1.Rows[index].Cells[8].Value = hzjg.GetString(8);//备注
+                    this.dataGridView1.Rows[index].Cells[8].Value = hzjg.GetString(8);//新加开支来源,20190603
+                    this.dataGridView1.Rows[index].Cells[9].Value = hzjg.GetString(9);//新变为9，才是备注
 
                 }
             }
@@ -383,7 +399,12 @@ namespace TQXZXXCWSHXT
 
         private void button12_Click(object sender, EventArgs e)
         {
+            try
+                {
             this.dataGridView1.Rows.Remove(this.dataGridView1.CurrentRow);
+                }
+                catch{
+                }
         }
 
         private void textBzs_KeyPress(object sender, KeyPressEventArgs e)
@@ -410,6 +431,14 @@ namespace TQXZXXCWSHXT
             {
                 SendKeys.Send("{Tab}");
             }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)  //保存经费修改，经费表中添加、修改或删除后，保存到表中
+        {//在数据库中新建了一个xxje表，记录学校金额，表中共有五个字段，分别为
+          //bzxx varchar(30),jfly varchar(50),zsr double,zzc double,ye  。
+
+
 
         }
     }
