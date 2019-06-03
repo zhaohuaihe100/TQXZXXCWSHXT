@@ -33,8 +33,40 @@ namespace TQXZXXCWSHXT
             //报账ID为年月日+日时分，除年之外，每一项都占2位，
             this.textBbzid.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:mm");        // 2008-09-04 
 
+            //在jfjlb中显示此学校的各项经费，及收入支出余额
+            this.jfjlb.Rows.Clear(); //重新显示数据库中此次报账的记录，根据报账ID显示保存记录
+            string ssql = "select * from xxje where bzxx='" + this.selectedSchool + "'";
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
+            mc.SetDataBase("TQXZXXCWSHXT");
+
+            MySqlDataReader jejl = mc.ExeQuery(ssql); //jejl为从数据库表xxje中读取的记录
+            try
+            {
+
+                while (jejl.Read())
+                {
+                    int index = this.jfjlb.Rows.Add();
+                    this.jfjlb.Rows[index].Cells[0].Value = jejl.GetString(1);//报账学校
+                    this.jfjlb.Rows[index].Cells[1].Value = jejl.GetString(2);//报账ID
+                    this.jfjlb.Rows[index].Cells[2].Value = jejl.GetString(3);//总分类科目if
+                    this.jfjlb.Rows[index].Cells[3].Value = jejl.GetString(4);//明细分类科目
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            
+
             //清除GridView中的内容
             dataGridView1.Rows.Clear();
+
 
         }
 
@@ -434,12 +466,60 @@ namespace TQXZXXCWSHXT
 
         }
 
+        private bool saveJFJE() //保存学校经费记录项目
+        {
+            int nRows = 1;
+            if (this.jfjlb.Rows.Count > 1)
+                nRows = this.jfjlb.Rows.Count - 1;
+            else
+                return false;
+           
+
+            MysqlConnector mc = new MysqlConnector();
+            mc.SetServer("192.168.78.189");
+            mc.SetUserID("root");
+            mc.SetPassword("root");
+            mc.SetDataBase("TQXZXXCWSHXT");
+            //删除表中该学校原有记录，重新生成该学校新的记录
+            string sqld = "delete from xxje where bzxx='" + this.selectedSchool + "'";
+            mc.ExeUpdate(sqld);
+
+            for (int i = 0; i < nRows; i++)
+            {
+                string ssql = "insert into xxje values(" + "'" + this.selectedSchool + "'" + "," + "'" + this.jfjlb.Rows[i].Cells[0].Value + "'" + "," + "'"
+                    + this.jfjlb.Rows[i].Cells[1].Value + "'" + "," + "'" + this.jfjlb.Rows[i].Cells[2].Value +
+                    "'" + "," + "'" + this.jfjlb.Rows[i].Cells[3].Value + "'"+ ")";
+                //MySqlDataAdapter reader = mc.ExeQuery(ssql);
+
+               // MessageBox.Show(ssql); 显示插入到数据库的sql句子
+
+                //mc.ExeQuery(ssql);
+                mc.ExeUpdate(ssql);
+
+            }
+
+            MessageBox.Show("保存完毕");
+           
+
+            return true;
+        }
         private void button6_Click(object sender, EventArgs e)  //保存经费修改，经费表中添加、修改或删除后，保存到表中
         {//在数据库中新建了一个xxje表，记录学校金额，表中共有五个字段，分别为
           //bzxx varchar(30),jfly varchar(50),zsr double,zzc double,ye  。
 
+            saveJFJE();
 
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.jfjlb.Rows.Remove(this.jfjlb.CurrentRow);
+            }
+            catch
+            {
+            }
         }
     }
 

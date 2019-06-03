@@ -1,0 +1,9 @@
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bzxx  | varchar(30) | NO   | PRI | NULL    |       |
+| jfly  | varchar(50) | YES  |     | NULL    |       |
+| zsr   | double      | YES  |     | NULL    |       |
+| zzc   | double      | YES  |     | NULL    |       |
+| ye    | double      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
