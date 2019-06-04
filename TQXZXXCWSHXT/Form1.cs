@@ -43,17 +43,18 @@ namespace TQXZXXCWSHXT
             mc.SetDataBase("TQXZXXCWSHXT");
 
             MySqlDataReader jejl = mc.ExeQuery(ssql); //jejl为从数据库表xxje中读取的记录
+            
             try
             {
 
                 while (jejl.Read())
                 {
                     int index = this.jfjlb.Rows.Add();
-                    this.jfjlb.Rows[index].Cells[0].Value = jejl.GetString(1);//报账学校
-                    this.jfjlb.Rows[index].Cells[1].Value = jejl.GetString(2);//报账ID
-                    this.jfjlb.Rows[index].Cells[2].Value = jejl.GetString(3);//总分类科目if
-                    this.jfjlb.Rows[index].Cells[3].Value = jejl.GetString(4);//明细分类科目
-                    
+                    this.jfjlb.Rows[index].Cells[0].Value = jejl.GetString(1);//经费来源
+                    this.jfjlb.Rows[index].Cells[1].Value = jejl.GetString(2);//本次收入
+                    this.jfjlb.Rows[index].Cells[2].Value = jejl.GetString(3);//总收入
+                    this.jfjlb.Rows[index].Cells[3].Value = jejl.GetString(4);//总支出
+                    this.jfjlb.Rows[index].Cells[4].Value = jejl.GetString(5);//余额
 
                 }
             }
@@ -204,7 +205,7 @@ namespace TQXZXXCWSHXT
                     "," + "'" + this.dataGridView1.Rows[i].Cells[9].Value + "'"  //9是备注                 
                     + ")";
                 //MySqlDataAdapter reader = mc.ExeQuery(ssql);
-                MessageBox.Show(ssql);
+                //MessageBox.Show(ssql);
 
                 //mc.ExeQuery(ssql);
                 mc.ExeUpdate(ssql);
@@ -289,19 +290,19 @@ namespace TQXZXXCWSHXT
         private void button7_Click(object sender, EventArgs e) //生成报账记录表,excel表
         {
             string ssql_pjzs_all = "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjzs) as pjzs， from bzjilu where bzid='" + 
-                this.textBbzid.Text + "'" + " group by mxflkm with rollup";
-            createBZJLB(ssql_pjzs_all,false, 6);//填写张数
+                this.textBbzid.Text + "'" + " group by mxflkm with rollup";//汇总票记录表中的张数
+            ExcelEditHelper do_excel = new ExcelEditHelper(); //生成操作excel的类
 
-            string ssql_pjje_all = "select ifnull(mxflkm,'合计：') as mxflkm,sum(pjje) as pjje， from bzjilu where bzid='" +
-                this.textBbzid.Text + "'" + " and sfxj='现金' group by mxflkm with rollup";
-            createBZJLB(ssql_pjje_all, false, 7);//填写票据现金金额
+            do_excel.Open("\\MODE.xlsx");// 获取模板
 
+            //do_excel.ws = do_excel.GetSheet("Sheet3");//获取表格方式
 
+            createBZJLB(ssql_pjzs_all,false, 6,do_excel);//制作报账记录表
 
-           
+                  
 
         }
-        private void createBZJLB(string msql,bool sh,int nrow) //调用此函数生成报账记录表,sh表示是申请的金额还是审核的金额，false表示申请金额，true表示
+        private void createBZJLB(string msql,bool sh,int nrow,ExcelEditHelper do_excel) //调用此函数生成报账记录表,sh表示是申请的金额还是审核的金额，false表示申请金额，true表示
                                                             //审核金额，nrow表示在第几行插入相应数字,在申请栏中6是张数，7是现金，8是转账，9是总额。
         {                                              //在审核后栏中，10是审核后张数，11是审核后现金，12是审核后转账，13审核后总金额。
             MysqlConnector mc = new MysqlConnector();
@@ -320,11 +321,7 @@ namespace TQXZXXCWSHXT
                 MessageBox.Show("请保存数据后再生成报账申请表");
                 return;
             }
-            ExcelEditHelper do_excel = new ExcelEditHelper(); //生成操作excel的类
-
-            do_excel.Open("D:\\MODE.xlsx");// 绝对路径
-
-            do_excel.ws = do_excel.GetSheet("Sheet3");//获取表格方式
+            
 
             int i = 0;
             do  //循环输出各个科目的汇总张数及金额
@@ -336,14 +333,14 @@ namespace TQXZXXCWSHXT
                     {
                         if (sh == false)
                         {
-                            do_excel.SetCellValue(do_excel.ws, 5, 3 + i, hzjg.GetString(0));
-                            do_excel.SetCellValue(do_excel.ws, nrow, 3 + i, hzjg.GetDouble(1));
-                            //do_excel.SetCellValue(do_excel.ws, 7, 3 + i, xj.GetDouble(1));
+                            do_excel.SetCellValue(do_excel.wb.Worksheets["Sheet3"], 5, 3 + i, hzjg.GetString(0));//对应报账科目
+                            do_excel.SetCellValue(do_excel.wb.Worksheets["Sheet3"], nrow, 3 + i, hzjg.GetDouble(1));
+                            
                         }
                         else
                         {
-                            do_excel.SetCellValue(do_excel.ws, 10, 3 + i, hzjg.GetString(0));
-                            do_excel.SetCellValue(do_excel.ws, nrow, 3 + i, hzjg.GetDouble(1));
+                            do_excel.SetCellValue(do_excel.GetSheet("Sheet3"), 10, 3 + i, hzjg.GetString(0));
+                            do_excel.SetCellValue(do_excel.GetSheet("Sheet3"), nrow, 3 + i, hzjg.GetDouble(1));
 
                         }
                     }
@@ -358,10 +355,11 @@ namespace TQXZXXCWSHXT
                 //MessageBox.Show(hzjg.GetString(1)); 2018-11-06 03:22:22
                 i++;
             } while (hzjg.Read());
+            do_excel.Close_wb();//关闭打开多余的工作薄MODE1
 
 
-
-            do_excel.wbs.Application.Visible = true;   
+            do_excel.wbs.Application.Visible = true;
+            //do_excel.Close();
 
         }
 
@@ -488,7 +486,7 @@ namespace TQXZXXCWSHXT
             {
                 string ssql = "insert into xxje values(" + "'" + this.selectedSchool + "'" + "," + "'" + this.jfjlb.Rows[i].Cells[0].Value + "'" + "," + "'"
                     + this.jfjlb.Rows[i].Cells[1].Value + "'" + "," + "'" + this.jfjlb.Rows[i].Cells[2].Value +
-                    "'" + "," + "'" + this.jfjlb.Rows[i].Cells[3].Value + "'"+ ")";
+                    "'" + "," + "'" + this.jfjlb.Rows[i].Cells[3].Value + "'"+"," + "'" + this.jfjlb.Rows[i].Cells[4].Value + "'"+ ")";
                 //MySqlDataAdapter reader = mc.ExeQuery(ssql);
 
                // MessageBox.Show(ssql); 显示插入到数据库的sql句子

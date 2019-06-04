@@ -51,6 +51,7 @@ namespace TQXZXXCWSHXT
                 wb = wbs.Add(FileName);
                 wb = wbs.Open(FileName, missing, true, missing, missing, missing, missing, missing, missing, true, missing, missing, missing, missing, missing);
                 mFilename = FileName;
+                
             }
             catch (Exception ex)
             {
@@ -310,6 +311,11 @@ namespace TQXZXXCWSHXT
             wbs = null;
             app = null;
             GC.Collect();
+        }
+        public void Close_wb()
+        {
+            Excel.Workbook workbook = this.app.Workbooks.get_Item(1);  //this.Application.Workbooks.get_Item(fileName);
+            workbook.Close(false, Type.Missing, Type.Missing);
         }
     }
 }
